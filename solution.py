@@ -11,13 +11,11 @@ def solution(p: float, x: np.array) -> tuple:
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    alpha = p
-    p_values = x
-    loc = x.mean()
-    b_max = np.max(p_values)
-    z = 0
-    if alpha > 0 and alpha < 1:
-        z = np.abs(np.round(scipy.stats.norm.ppf((1 - alpha) / 2), 2))
-    left_bound = b_max
-    right_bound = b_max + z * ((b_max - 0.083) / 2)
-    return left_bound, right_bound
+    confidence_level = p
+    alpha_values = x
+    
+    quantiles = np.quantile(alpha_values, [1 - confidence_level, confidence_level])
+    # Определение левой и правой границы доверительного интервала
+    left_boundary = 2 * alpha_values.max() - quantiles[0]
+    right_boundary = quantiles[1]
+    return left_boundary, right_boundary
