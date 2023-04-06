@@ -18,4 +18,4 @@ def solution(p: float, x: np.array) -> tuple:
     # Определение левой и правой границы доверительного интервала
     left_boundary = 2 * alpha_values.max() - quantiles[0]
     right_boundary = quantiles[1]
-    return left_boundary, right_boundary
+    return right_boundary, left_boundary
