@@ -8,4 +8,4 @@ def solution(p: float, x: np.array) -> tuple:
     p_values = x
     q = np.quantile(p_values, alpha)
     confidence_interval = [0.083, q]
-    return confidence_interval[0], confidence_interval[1]
+    return confidence_interval[1], confidence_interval[0]
